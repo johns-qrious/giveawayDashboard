@@ -12,3 +12,9 @@ body {
     margin: 2em auto; /* Center the container horizontally */
     max-width: 800px; /* Limit the width of the container */
 }
+
+.hLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
