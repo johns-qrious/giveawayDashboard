@@ -1,0 +1,14 @@
+body {
+    background: linear-gradient(to bottom, #8E2DE2, #4A00E0);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 2em 1em; /* White padding around the container */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 2em auto; /* Center the container horizontally */
+    max-width: 800px; /* Limit the width of the container */
+}

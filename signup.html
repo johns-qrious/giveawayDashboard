@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Sign-up</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">Event Sign-up</h1>
+
+        <!-- Event Details -->
+        <div class="card">
+            <div class="card-header">
+                Event Details
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="eventName">Event Name:</label>
+                    <input type="text" class="form-control" id="eventName" value="SZA" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="eventDateTime">Event Date & Time:</label>
+                    <input type="text" class="form-control" id="eventDateTime" value="April 1, 2023, 12:00 PM" readonly>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign-up Form -->
+        <div class="card mt-4">
+            <div class="card-header">
+                Sign-up Form
+            </div>
+            <div class="card-body">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="tNumber">T-Number:</label>
+                        <input type="text" class="form-control" id="tNumber" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="thankYouModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="text-center">Thank you for signing up!</h1>
+                    <p class="text-center" id="eventInfo"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#signupForm').submit(function(e) {
+                e.preventDefault();
+                var tNumber = $('#tNumber').val();
+                var eventName = $('#eventName').val();
+                var eventDateTime = $('#eventDateTime').val();
+
+                // Prepare payload
+                var payload = {
+                    "data": [
+                        {
+                            "fieldID": "-CXrsY_BtEKSYgjcVX0z4g",
+                            "name": "T Number",
+                            "value": tNumber
+                        }
+                    ],
+                    "transactionalData": [
+                        {
+                            "transactionalFormID": "qzSiACMGEE2RiwjcU8bqKQ",
+                            "rows": [
+                                {
+                                    "data": [
+                                        {
+                                            "fieldID": "Rt77e5F3_ke9KwjcU8brzQ",
+                                            "name": "Event Name",
+                                            "value": eventName
+                                        },
+                                        {
+                                            "fieldID": "5ghJpEAMSUKaAAjcU8bs1Q",
+                                            "name": "Event Datetime",
+                                            "value": eventDateTime
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // Make API call
+                $.ajax({
+                    type: "POST",
+                    url: "https://api.ubiquity.co.nz/forms/hGe0lnl-FU6VPwjcU8bjNw/submit?format=json&apiToken=yKeYLekMt5MhThfvDhmyFdmUKP2wDv_SA-ZcTGucqkc824PuSb2JOP1bAWH9DwjYKRC8HSlijUH3i0Rjw0UqRbNGsUaGzhEacZEoTSWux22gGLYZ6sdRDMd_UgHCwathc1UdrcDXnBM",
+                    contentType: "application/json",
+                    data: JSON.stringify(payload),
+                    success: function(response) {
+                        // Upon successful response, clear the form modal
+                        $('#tNumber').val('');
+                        $('#thankYouModal').modal('show');
+                        $('#eventInfo').text('You have entered the giveaway to ' + eventName + ' on ' + eventDateTime);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

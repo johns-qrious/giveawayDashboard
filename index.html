@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giveaways Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">Giveaways Dashboard</h1>
+
+        <div>
+            <h2>Giveaways</h2>
+            <table class="table table-striped" id="upcoming-table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Date & Time</th>
+                        <th>Number of Tickets</th>
+                        <th>Giveaway Draw Status</th>
+                        <th>Scheduled Draw Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="upcoming-body">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal for editing giveaways -->
+        <div class="modal" id="editModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Giveaway</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm">
+                            <input type="hidden" id="editId">
+                            <div class="form-group">
+                                <label for="editEventName">Event Name:</label>
+                                <input type="text" class="form-control" id="editEventName">
+                            </div>
+                            <div class="form-group">
+                                <label for="editDateTime">Event Date & Time:</label>
+                                <input type="datetime-local" class="form-control" id="editDateTime">
+                            </div>
+                            <div class="form-group">
+                                <label for="editTickets">Number of Tickets:</label>
+                                <input type="number" class="form-control" id="editTickets">
+                            </div>
+                            <div class="form-group">
+                                <label for="editBallotStatus">Giveaway Draw Status:</label>
+                                <select class="form-control" id="editBallotStatus">
+                                    <option value="Open">Open</option>
+                                    <option value="Closed">Closed</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editBallotRunDate">Scheduled Draw Date:</label>
+                                <input type="date" class="form-control" id="editBallotRunDate">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2>Past Giveaways</h2>
+            <table class="table table-striped" id="past-table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Date & Time</th>
+                        <th>Number of Tickets</th>
+                        <th>Giveaway Draw Status</th>
+                        <th>Scheduled Draw Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="past-body">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <button class="btn btn-primary mb-4" id="add-giveaway">Add New Giveaway</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
