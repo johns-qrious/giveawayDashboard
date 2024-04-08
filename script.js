@@ -1,6 +1,6 @@
 // Sample data
 let upcomingGiveaways = [
-    { id: 1, eventName: "SZA", dateTime: "2023-04-01T12:00", tickets: 2, ballotStatus: "Open", ballotRunDate: "2023-03-15" },
+    { id: 1, eventName: "SZA", dateTime: "2023-04-05T12:00", tickets: 2, ballotStatus: "Open", ballotRunDate: "2023-03-15" },
     { id: 2, eventName: "The Weeknd", dateTime: "2023-04-15T18:00", tickets: 2, ballotStatus: "Closed", ballotRunDate: "2023-04-10" }
 ];
 
